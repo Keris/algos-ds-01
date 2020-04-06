@@ -30,3 +30,12 @@
 *.exe
 *.out
 *.app
+
+# clion
+.idea/
+
+# build files
+build/
+
+# Visual Studio Code settings
+.vscode/
