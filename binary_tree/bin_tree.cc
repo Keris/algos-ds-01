@@ -1,4 +1,7 @@
 #include "bin_tree.h"
+
+#include <queue>
+
 #include "../json/json.hpp"
 
 using json = nlohmann::json;
@@ -16,8 +19,7 @@ Tree *_internal_build(const json &j_array, int idx) {
 
 Tree *build_tree(const std::string &j_str) {
   auto js = json::parse(j_str);
-  if (js.empty())
-    return nullptr;
+  if (js.empty()) return nullptr;
   return _internal_build(js, 0);
 }
 
@@ -43,4 +45,24 @@ void traverse_post_order(Tree *t, std::vector<int> &out) {
     traverse_post_order(t->right, out);
     out.push_back(t->val);
   }
+}
+
+std::vector<std::vector<int>> traverse_by_level(Tree *t) {
+  if (!t) return {};
+  std::queue<Tree*> q;
+  std::vector<std::vector<int>> res;
+  q.push(t);
+  while (!q.empty()) {
+    int sz = q.size();
+    std::vector<int> v;
+    for (int i = 0; i != sz; i++) {
+       auto node = q.front();
+       v.push_back(node->val);
+       q.pop();
+       if (node->left) q.push(node->left);
+       if (node->right) q.push(node->right);
+    }
+    res.push_back(v);
+  }
+  return res;
 }

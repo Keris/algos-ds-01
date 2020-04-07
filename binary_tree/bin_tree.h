@@ -25,4 +25,7 @@ void traverse_in_order(Tree *t, std::vector<int> &out);
 // Traverse a tree in post-order
 void traverse_post_order(Tree *t, std::vector<int> &out);
 
+// Traverse a tree by level
+std::vector<std::vector<int>> traverse_by_level(Tree *t);
+
 #endif  // ALGOS_DS_01_BIN_TREE_H

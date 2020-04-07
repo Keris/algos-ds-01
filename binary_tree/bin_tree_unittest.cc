@@ -24,7 +24,7 @@ TEST(BinTreeTraversalPreOrder, OneNodeTree) {
 // Input tree is as follows:
 //   1
 //  / \
-// 2  3
+// 2   3
 TEST(BinTreeTraversalPreOrder, NormalTree) {
   Tree *t = build_tree("[1,2,3,4,5,null,6]");
   std::vector<int> x;
@@ -54,11 +54,11 @@ TEST(BinTreeTraversalInOrder, OneNodeTree) {
 }
 
 // Input tree is as follows:
-//      1
-//    /  \
+//     1
+//    / \
 //   2   3
 //  / \   \
-// 4  5   6
+// 4   5   6
 TEST(BinTreeTraversalInOrder, NormalTree) {
   Tree *t = build_tree("[1,2,3,4,5,null,6]");
   std::vector<int> x;
@@ -88,11 +88,11 @@ TEST(BinTreeTraversalPostOrder, OneNodeTree) {
 }
 
 // Input tree is as follows:
-//      1
-//    /  \
+//     1
+//    / \
 //   2   3
 //  / \   \
-// 4  5   6
+// 4   5   6
 TEST(BinTreeTraversalPostOrder, NormalTree) {
   Tree *t = build_tree("[1,2,3,4,5,null,6]");
   std::vector<int> x;
@@ -103,4 +103,21 @@ TEST(BinTreeTraversalPostOrder, NormalTree) {
     EXPECT_EQ(x[i], y[i]) << "Vectors x and y differ at index " << i;
   }
 }
+
+// Tests binary tree traversal by level
+TEST(BinTreeTraversalByLevel, NormalTree) {
+  Tree *t = build_tree("[1,2,3,4,5,null,6]");
+  auto x = traverse_by_level(t);
+  std::vector<std::vector<int>> y{{1}, {2, 3}, {4, 5, 6}};
+  ASSERT_EQ(x.size(), y.size()) << "x and y are of unequal length";
+  for (int i = 0; i != x.size(); i++) {
+    ASSERT_EQ(x[i].size(), y[i].size())
+        << "x[i] and y[i] are of unequal length at index " << i;
+    for (int j = 0; j != x[i].size(); j++) {
+      EXPECT_EQ(x[i][j], y[i][j])
+          << "Vectors x[i] and y[i] differ at index " << j;
+    }
+  }
+}
+
 }  // namespace
