@@ -120,4 +120,15 @@ TEST(BinTreeTraversalByLevel, NormalTree) {
   }
 }
 
-}  // namespace
+// Tests binary tree traversal in preorder iterately
+TEST(BinTreeTraversalPreOrderIter, NormalTree) {
+  Tree *t = build_tree("[1,2,3,4,5,null,6]");
+  auto x = traverse_pre_order_iter(t);
+  std::vector<int> y;
+  traverse_pre_order(t, y);
+  ASSERT_EQ(x.size(), y.size()) << "x and y are of unequal length";
+  for (int i = 0; i != x.size(); i++) {
+    EXPECT_EQ(x[i], y[i]) << "Vectors x and y differ at index " << i;
+  }
+}
+} // namespace

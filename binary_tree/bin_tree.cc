@@ -1,6 +1,7 @@
 #include "bin_tree.h"
 
 #include <queue>
+#include <stack>
 
 #include "../json/json.hpp"
 
@@ -29,6 +30,22 @@ void traverse_pre_order(Tree *t, std::vector<int> &out) {
     traverse_pre_order(t->left, out);
     traverse_pre_order(t->right, out);
   }
+}
+
+std::vector<int> traverse_pre_order_iter(Tree *t) {
+    if (!t) return {};
+
+    std::vector<int> result;
+    std::stack<Tree*> st;
+    st.push(t);
+    while (!st.empty()) {
+        auto n = st.top(); // fetch a tree node
+        result.push_back(n->val);
+        st.pop();
+        if (n->right) st.push(n->right);
+        if (n->left) st.push(n->left);
+    }
+    return result;
 }
 
 void traverse_in_order(Tree *t, std::vector<int> &out) {
