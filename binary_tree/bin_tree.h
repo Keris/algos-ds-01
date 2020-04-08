@@ -19,7 +19,7 @@ Tree *build_tree(const std::string &j_str);
 // Traverse a tree in pre-order
 void traverse_pre_order(Tree *t, std::vector<int> &out);
 
-// Traverse a tree in pre-order iterately
+// Traverse a tree in pre-order iteratively
 std::vector<int> traverse_pre_order_iter(Tree *t);
 
 // Traverse a tree in in-order

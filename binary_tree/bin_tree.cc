@@ -33,19 +33,19 @@ void traverse_pre_order(Tree *t, std::vector<int> &out) {
 }
 
 std::vector<int> traverse_pre_order_iter(Tree *t) {
-    if (!t) return {};
+  if (!t) return {};
 
-    std::vector<int> result;
-    std::stack<Tree*> st;
-    st.push(t);
-    while (!st.empty()) {
-        auto n = st.top(); // fetch a tree node
-        result.push_back(n->val);
-        st.pop();
-        if (n->right) st.push(n->right);
-        if (n->left) st.push(n->left);
-    }
-    return result;
+  std::vector<int> result;
+  std::stack<Tree *> st;
+  st.push(t);
+  while (!st.empty()) {
+    auto n = st.top();  // visit a tree node
+    result.push_back(n->val);
+    st.pop();
+    if (n->right) st.push(n->right);
+    if (n->left) st.push(n->left);
+  }
+  return result;
 }
 
 void traverse_in_order(Tree *t, std::vector<int> &out) {
@@ -66,18 +66,18 @@ void traverse_post_order(Tree *t, std::vector<int> &out) {
 
 std::vector<std::vector<int>> traverse_by_level(Tree *t) {
   if (!t) return {};
-  std::queue<Tree*> q;
+  std::queue<Tree *> q;
   std::vector<std::vector<int>> res;
   q.push(t);
   while (!q.empty()) {
     int sz = q.size();
     std::vector<int> v;
     for (int i = 0; i != sz; i++) {
-       auto node = q.front();
-       v.push_back(node->val);
-       q.pop();
-       if (node->left) q.push(node->left);
-       if (node->right) q.push(node->right);
+      auto node = q.front();
+      v.push_back(node->val);
+      q.pop();
+      if (node->left) q.push(node->left);
+      if (node->right) q.push(node->right);
     }
     res.push_back(v);
   }
