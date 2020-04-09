@@ -131,4 +131,22 @@ TEST(BinTreeTraversalPreOrderIter, NormalTree) {
     EXPECT_EQ(x[i], y[i]) << "Vectors x and y differ at index " << i;
   }
 }
+
+// Tests binary tree traversal in inorder iterately
+TEST(BinTreeTraversalInOrderIter, NormalTree) {
+  Tree *t = build_tree("[1,2,3,4,5,null,6]");
+  auto x = traverse_in_order_iter(t);
+  std::vector<int> y;
+  traverse_in_order(t, y);
+  ASSERT_EQ(x.size(), y.size()) << "x and y are of unequal length";
+  for (int i = 0; i != x.size(); i++) {
+    EXPECT_EQ(x[i], y[i]) << "Vectors x and y differ at index " << i;
+  }
+}
+
+TEST(BinTreeTraversalInOrderIter, EmptyTree) {
+  Tree *t = build_tree("[]");
+  auto x = traverse_in_order_iter(t);
+  ASSERT_EQ(x.size(), 0) << "Empty tree should have zero elements";
+}
 } // namespace

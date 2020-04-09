@@ -56,6 +56,26 @@ void traverse_in_order(Tree *t, std::vector<int> &out) {
   }
 }
 
+std::vector<int> traverse_in_order_iter(Tree *t) {
+  if (!t) return {};
+
+  std::stack<Tree *> st;
+  std::vector<int> result;
+  auto curr = t;
+  while (!st.empty() || curr) {
+    if (curr) {
+      st.push(curr);
+      curr = curr->left;
+    } else {
+      curr = st.top();
+      st.pop();
+      result.push_back(curr->val);
+      curr = curr->right;
+    }
+  }
+  return result;
+}
+
 void traverse_post_order(Tree *t, std::vector<int> &out) {
   if (t) {
     traverse_post_order(t->left, out);
