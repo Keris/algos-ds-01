@@ -31,6 +31,9 @@ std::vector<int> traverse_in_order_iter(Tree *t);
 // Traverse a tree in post-order
 void traverse_post_order(Tree *t, std::vector<int> &out);
 
+// Traverse a tree in post-order iteratively
+std::vector<int> traverse_post_order_iter(Tree *t);
+
 // Traverse a tree by level
 std::vector<std::vector<int>> traverse_by_level(Tree *t);
 

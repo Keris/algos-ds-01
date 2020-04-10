@@ -149,4 +149,21 @@ TEST(BinTreeTraversalInOrderIter, EmptyTree) {
   auto x = traverse_in_order_iter(t);
   ASSERT_EQ(x.size(), 0) << "Empty tree should have zero elements";
 }
-} // namespace
+
+TEST(BinTreeTraversalPostOrderIter, EmptyTree) {
+  Tree *t = build_tree("[]");
+  auto x = traverse_post_order_iter(t);
+  ASSERT_EQ(x.size(), 0) << "Empty tree should have zero elements";
+}
+
+TEST(BinTreeTraversalPostOrderIter, NormalTree) {
+  Tree *t = build_tree("[1,2,3,4,5,null,6]");
+  std::vector<int> x;
+  traverse_post_order(t, x);
+  auto y = traverse_post_order_iter(t);
+  ASSERT_EQ(x.size(), y.size()) << "x and y are of unequal length";
+  for (int i = 0; i != x.size(); i++) {
+    EXPECT_EQ(x[i], y[i]) << "Vectors x and y differ at index " << i;
+  }
+}
+}  // namespace

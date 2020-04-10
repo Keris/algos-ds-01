@@ -84,6 +84,32 @@ void traverse_post_order(Tree *t, std::vector<int> &out) {
   }
 }
 
+std::vector<int> traverse_post_order_iter(Tree *t) {
+  if (!t) return {};
+
+  std::stack<Tree *> st;
+  std::vector<int> result;
+  tree_node_t *last_node = nullptr;
+  auto curr = t;
+  while (!st.empty() || curr) {
+    if (curr) {
+      st.push(curr);
+      curr = curr->left;
+    } else {
+      curr = st.top();
+      if (curr->right && curr->right != last_node)
+        curr = curr->right;
+      else {
+        result.push_back(curr->val);
+        st.pop();
+        last_node = curr;
+        curr = nullptr;
+      }
+    }
+  }
+  return result;
+}
+
 std::vector<std::vector<int>> traverse_by_level(Tree *t) {
   if (!t) return {};
   std::queue<Tree *> q;
