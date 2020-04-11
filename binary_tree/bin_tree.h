@@ -37,4 +37,9 @@ std::vector<int> traverse_post_order_iter(Tree *t);
 // Traverse a tree by level
 std::vector<std::vector<int>> traverse_by_level(Tree *t);
 
+// Get max depth of a tree
+// The max depth is the number of nodes along the path from root node
+// down to the farthest leaf node
+int max_depth(Tree *t);
+
 #endif  // ALGOS_DS_01_BIN_TREE_H

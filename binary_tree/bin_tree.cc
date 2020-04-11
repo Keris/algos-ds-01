@@ -1,5 +1,6 @@
 #include "bin_tree.h"
 
+#include <algorithm>
 #include <queue>
 #include <stack>
 
@@ -128,4 +129,12 @@ std::vector<std::vector<int>> traverse_by_level(Tree *t) {
     res.push_back(v);
   }
   return res;
+}
+
+int max_depth(Tree *t) {
+  if (!t) return 0;
+
+  auto h1 = max_depth(t->left);
+  auto h2 = max_depth(t->right);
+  return 1 + std::max(h1, h2);
 }

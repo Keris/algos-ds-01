@@ -166,4 +166,27 @@ TEST(BinTreeTraversalPostOrderIter, NormalTree) {
     EXPECT_EQ(x[i], y[i]) << "Vectors x and y differ at index " << i;
   }
 }
+
+TEST(TreeMaxDepth, EmptyTree) {
+  Tree *t{nullptr};
+  auto h = max_depth(t);
+  ASSERT_EQ(h, 0) << "The height of empty tree is not 0";
+}
+
+TEST(TreeMaxDepth, SingleNodeTree) {
+  Tree *t = build_tree("[1]");
+  auto h = max_depth(t);
+  ASSERT_EQ(h, 1) << "The height of tree with only one node is not 1";
+}
+
+TEST(TreeMaxDepth, TreeOfDepth2) {
+  Tree *t = build_tree("[1,2,3]");
+  auto h = max_depth(t);
+  ASSERT_EQ(h, 2);
+}
+
+TEST(TreeMaxDepth, TreeOfDepth3) {
+  Tree *t = build_tree("[1,2,3,null,4]");
+  ASSERT_EQ(max_depth(t), 3);
+}
 }  // namespace
