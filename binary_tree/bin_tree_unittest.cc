@@ -189,4 +189,19 @@ TEST(TreeMaxDepth, TreeOfDepth3) {
   Tree *t = build_tree("[1,2,3,null,4]");
   ASSERT_EQ(max_depth(t), 3);
 }
+
+TEST(TreeSumOfLeftLeaves, EmptyTree) {
+  Tree *t{nullptr};
+  EXPECT_EQ(sum_of_left_leaves(t), 0);
+}
+
+TEST(TreeSumOfLeftLeaves, TreeWithOneNode) {
+  Tree *t = build_tree("[1]");
+  EXPECT_EQ(sum_of_left_leaves(t), 0);
+}
+
+TEST(TreeSumOfLeftLeaves, NormalTree) {
+  Tree *t = build_tree("[3,9,20,null,null,15,7]");
+  EXPECT_EQ(sum_of_left_leaves(t), 24);
+}
 }  // namespace

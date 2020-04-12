@@ -138,3 +138,21 @@ int max_depth(Tree *t) {
   auto h2 = max_depth(t->right);
   return 1 + std::max(h1, h2);
 }
+
+int sum_of_left_leaves(Tree *t) {
+  if (!t) return 0;
+  std::stack<Tree *> st;
+  int res{0};
+  st.push(t);
+  tree_node_t *parent = nullptr;
+  while (!st.empty()) {
+    auto tn = st.top();
+    st.pop();
+    // visit node if it's a left leaf
+    if (parent && parent->left == tn && !tn->left && !tn->right) res += tn->val;
+    parent = tn;
+    if (tn->right) st.push(tn->right);
+    if (tn->left) st.push(tn->left);
+  }
+  return res;
+}

@@ -42,4 +42,7 @@ std::vector<std::vector<int>> traverse_by_level(Tree *t);
 // down to the farthest leaf node
 int max_depth(Tree *t);
 
+// Get the sum of all left leaves in a given binary tree
+int sum_of_left_leaves(Tree *t);
+
 #endif  // ALGOS_DS_01_BIN_TREE_H
