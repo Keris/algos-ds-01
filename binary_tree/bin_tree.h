@@ -4,14 +4,14 @@
 #include <string>
 #include <vector>
 
-struct tree_node_t {
+struct TreeNode {
   int val;
-  tree_node_t *left, *right;
+  TreeNode *left, *right;
 
-  explicit tree_node_t(int x) : val{x}, left{nullptr}, right{nullptr} {}
+  explicit TreeNode(int x) : val{x}, left{nullptr}, right{nullptr} {}
 };
 
-using Tree = tree_node_t;
+using Tree = TreeNode;
 
 // Build a tree from a json string of array of numbers
 Tree *build_tree(const std::string &j_str);

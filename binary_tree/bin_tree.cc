@@ -10,7 +10,7 @@ using json = nlohmann::json;
 
 Tree *_internal_build(const json &j_array, int idx) {
   if (idx < j_array.size() && j_array.at(idx) != nullptr) {
-    auto t_node = new tree_node_t(j_array.at(idx));
+    auto t_node = new TreeNode(j_array.at(idx));
     auto l_idx = 2 * idx + 1, r_idx = 2 * idx + 2;
     t_node->left = _internal_build(j_array, l_idx);
     t_node->right = _internal_build(j_array, r_idx);
@@ -90,7 +90,7 @@ std::vector<int> traverse_post_order_iter(Tree *t) {
 
   std::stack<Tree *> st;
   std::vector<int> result;
-  tree_node_t *last_node = nullptr;
+  TreeNode *last_node = nullptr;
   auto curr = t;
   while (!st.empty() || curr) {
     if (curr) {
@@ -144,7 +144,7 @@ int sum_of_left_leaves(Tree *t) {
   std::stack<Tree *> st;
   int res{0};
   st.push(t);
-  tree_node_t *parent = nullptr;
+  TreeNode *parent = nullptr;
   while (!st.empty()) {
     auto tn = st.top();
     st.pop();

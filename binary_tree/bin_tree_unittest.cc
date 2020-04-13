@@ -14,7 +14,7 @@ TEST(BinTreeTraversalPreOrder, EmptyTree) {
 }
 
 TEST(BinTreeTraversalPreOrder, OneNodeTree) {
-  Tree *t = new tree_node_t(0);
+  Tree *t = new TreeNode(0);
   std::vector<int> result;
   traverse_pre_order(t, result);
   ASSERT_EQ(1, result.size());
@@ -46,7 +46,7 @@ TEST(BinTreeTraversalInOrder, EmptyTree) {
 }
 
 TEST(BinTreeTraversalInOrder, OneNodeTree) {
-  Tree *t = new tree_node_t(0);
+  Tree *t = new TreeNode(0);
   std::vector<int> result;
   traverse_in_order(t, result);
   ASSERT_EQ(1, result.size());
@@ -80,7 +80,7 @@ TEST(BinTreeTraversalPostOrder, EmptyTree) {
 }
 
 TEST(BinTreeTraversalPostOrder, OneNodeTree) {
-  Tree *t = new tree_node_t(0);
+  Tree *t = new TreeNode(0);
   std::vector<int> result;
   traverse_post_order(t, result);
   ASSERT_EQ(1, result.size());
