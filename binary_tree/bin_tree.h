@@ -45,4 +45,7 @@ int max_depth(Tree *t);
 // Get the sum of all left leaves in a given binary tree
 int sum_of_left_leaves(Tree *t);
 
+// Check if a tree is subtree of another tree
+bool is_subtree(TreeNode *s, TreeNode *t);
+
 #endif  // ALGOS_DS_01_BIN_TREE_H

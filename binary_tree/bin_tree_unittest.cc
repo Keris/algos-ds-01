@@ -204,4 +204,10 @@ TEST(TreeSumOfLeftLeaves, NormalTree) {
   Tree *t = build_tree("[3,9,20,null,null,15,7]");
   EXPECT_EQ(sum_of_left_leaves(t), 24);
 }
+
+TEST(IsSubTreeTest, Test1) {
+  Tree *s = build_tree("[3,4,5,1,2]");
+  Tree *t = build_tree("[4,1,2]");
+  EXPECT_EQ(is_subtree(s, t), true);
+}
 }  // namespace

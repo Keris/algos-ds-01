@@ -156,3 +156,17 @@ int sum_of_left_leaves(Tree *t) {
   }
   return res;
 }
+
+bool is_identical_tree(TreeNode *s, TreeNode *t) {
+  if (!s && !t) return true;
+  if (s && !t) return false;
+  if (!s && t) return false;
+  return s->val == t->val && is_identical_tree(s->left, t->left) &&
+         is_identical_tree(s->right, t->right);
+}
+
+bool is_subtree(TreeNode *s, TreeNode *t) {
+  if (is_identical_tree(s, t)) return true;
+  if (s) return is_subtree(s->left, t) || is_subtree(s->right, t);
+  return false;
+}
